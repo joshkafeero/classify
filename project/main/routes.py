@@ -1,11 +1,11 @@
 from flask import render_template, url_for, redirect, request, Blueprint
 from flask_login import current_user, login_required
-from utils import features
+from utils import features , features2
 # from classify.models import 
 
 main = Blueprint('main', __name__)
 
-features = features()
+features = features2()
 
 
 @main.route("/")
