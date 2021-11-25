@@ -1,9 +1,14 @@
 
 from project import db, bcrypt, login_manager
+# from flask import current_app
+# from sqlalchemy import Column, Integer, String, ForeignKey
+# from sqlalchemy.orm import relationship
+
 
 
 class User(db.Model):
-    ID = db.Column(db.Integer,Primary_Key = True )
+    __tablename__ = "User" 
+    id = db.Column(db.Integer, primary_key=True)
     firstName= db.Column(db.String(20))
     LastName= db.Column(db.String(20))
     firstLoginTime = db.Column(db.DateTime)
