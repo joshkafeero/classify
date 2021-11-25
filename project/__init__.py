@@ -13,12 +13,14 @@ login_manager = LoginManager()
 login_manager.login_view = 'users.login'
 login_manager.login_message_category = 'info'
 mail = Mail()
-# migrate = Migrate(db)
+migrate = Migrate(compare_type = True) #instatiate a Migration object, compare_type True Used to recognise changes when making migration 
+
+
 
 
 def create_app():
     app = Flask(__name__, instance_relative_config=False, static_url_path='/static')
-    app.config.from_object('config.Config')
+    app.config.from_object('config.Config') #connect to the config file
 
 
     db.init_app(app)
@@ -28,7 +30,7 @@ def create_app():
     Migrate(app, db)
 
     # Imports
-    # from .models import User
+    from .model import User
 
     # to keep track of loggedin user
     @login_manager.user_loader

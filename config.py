@@ -1,5 +1,10 @@
 from os import environ
-# import pymysql
+from dotenv import load_dotenv
+import psycopg2 
+
+
+load_dotenv() # Helps you load things from .env file , exposes contents of the .env files 
+
 
 class Config(object):
     DEBUG = True
@@ -7,8 +12,8 @@ class Config(object):
     SECRET_KEY = environ.get('SECRET_KEY')
     
     #SQLALCHEMY_DATABASE_URI = environ.get('SQLALCHEMY_DATABASE_URI')
-    SQLALCHEMY_DATABASE_URI='sqlite:///site.db'
-    #SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:@localhost/hackday_db'
+    SQLALCHEMY_DATABASE_URI='sqlite:///classify.db'
+    #SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:SomePassword@localhost/classify_db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
