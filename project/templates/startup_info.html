@@ -21,7 +21,7 @@
 			<h4> Type or scroll </h4>
 			<input type="number" name="{{features[0]}}" min="1.00" class="c1" value={{values.get(features[0])}}> {{features[0]}}
 			<br> 
-			{% for feature in features[1:8] %}
+			{% for feature in features[2:9] %}
 			
 			<input type="number" name= "{{feature}}" min="0" class="c1" value={{values.get(feature)}}> {{feature}}  <br/> 
 			{% endfor %}
@@ -30,14 +30,14 @@
         <div id="city" class="homeinfokids">
 			<h4> State Code </h4>
             <!-- use the select tag here to create a drop down  -->
-			{% for feature in features[8:13] %}
+			{% for feature in features[9:14] %}
 			<input type="radio" name= "{{feature}}" class="c1 featsize" value={{values.get(feature)}}> {{feature}}  <br/> <br/>
 			{% endfor %}
 		</div>
 
         <div id="city" class="homeinfokids">
 			<h4> Profession </h4>
-			{% for feature in features[13:23] %}
+			{% for feature in features[14:24] %}
 			<input type="radio" name= "{{feature}}" class="c1 featsize" value={{values.get(feature)}}> {{feature}}  <br/> <br/>
 			{% endfor %}
 		</div>
@@ -45,13 +45,13 @@
 		<div id="radio" class="homeinfokids">
 
 			<h4> Select all that apply </h4>
-			{% for feature in features[23:33] %}	
+			{% for feature in features[24:32] %}	
 			<input type="checkbox" name = "{{feature}}" class="featsize" value ={{values.get(feature)}}> {{feature}}  <br/> <br/> 
 			{% endfor %}
 		</div>
 		<div id="city" class="homeinfokids">
 			<h4> Your city </h4>
-			{% for feature in features[33:-35] %}
+			{% for feature in features[32:-35] %}
 			<input type="radio" name= "{{feature}}" class="c1 featsize" value={{values.get(feature)}}> {{feature}}  <br/> <br/>
 			{% endfor %}
 		</div>

@@ -6,6 +6,20 @@ from flask_login import LoginManager
 from flask_mail import Mail
 # from project.config import Config
 
+#AWS Cognito
+from flask_awscognito import AWSCognitoAuthentication
+from flask_cors import CORS
+from jwt.algorithms import RSAAlgorithm
+from flask_jwt_extended import (
+    JWTManager,
+    set_access_cookies,
+    verify_jwt_in_request_optional,
+    get_jwt_identity,
+)
+
+from src.keys import get_cognito_public_keys
+
+
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
@@ -21,6 +35,14 @@ migrate = Migrate(compare_type = True) #instatiate a Migration object, compare_t
 def create_app():
     app = Flask(__name__, instance_relative_config=False, static_url_path='/static')
     app.config.from_object('config.Config') #connect to the config file
+    
+    #AWS
+    app.config["JWT_PUBLIC_KEY"] = RSAAlgorithm.from_jwk(get_cognito_public_keys())
+
+    CORS(app)
+    aws_auth = AWSCognitoAuthentication(app)
+    jwt = JWTManager(app)
+    #########
 
 
     db.init_app(app)

@@ -1,0 +1,12 @@
+#Clone the repo
+##Create a virtual environment 
+$ virtualenv  env
+##Activate environment 
+$ source env/bin/activate
+###Install dependencies 
+### If using pycopg2 on aws ubuntu instance, we shall need to install development headers for postgresql
+$ sudo apt install python3-dev libpq-dev
+$ pip install -r requirements.txt
+##You will need to open up port 5000 on the security groups for aws, change HTTP/80 to Custom TCP 5000
+###Run to your the app
+$ Python server.py
